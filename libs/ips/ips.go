@@ -21,10 +21,12 @@ func (ips IpAddresses) GetRandom() IpAddress {
 func CreateFromFile(f string) IpAddresses {
 	b, _ := os.ReadFile(f)
 	lines := strings.Split(string(b), "\n")
-	ips := make(IpAddresses, len(lines))
+	ips := IpAddresses{}
 
-	for i, l := range lines {
-		ips[i] = IpAddress(l)
+	for _, l := range lines {
+		if l != "" {
+			ips = append(ips, IpAddress(l))
+		}
 	}
 
 	return ips
