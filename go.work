@@ -1,0 +1,5 @@
+go 1.18
+
+use ./produce
+use ./consume
+use ./libs/ips
